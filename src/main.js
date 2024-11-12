@@ -1,5 +1,7 @@
-import { Game as MainGame } from './scenes/Game';
+import { PongGame } from './PongGame';
+import { BackgroundScene } from './scenes/BackgroundScene';
 import { AUTO, Scale,Game } from 'phaser';
+import { GameScene } from './scenes/GameScene';
 
 //  Find out more information about the Game Config at:
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
@@ -14,8 +16,10 @@ const config = {
         autoCenter: Scale.CENTER_BOTH
     },
     scene: [
-        MainGame
+        BackgroundScene,
+        GameScene,
     ]
 };
 
-export default new Game(config);
+let game = new PongGame(config);
+game.scene.start("game");
